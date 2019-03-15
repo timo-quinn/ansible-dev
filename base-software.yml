@@ -1,6 +1,18 @@
 - name: Install Base Software
   hosts: all
-  tasks:
-    - name: Install HTOP
-      debug:
-        msg: "Hello World!"
+  tasks:      
+    - name: install system updates for centos systems
+      yum: name=* state=latest update_cache=yes
+
+    - name: install epel-release
+      action: >
+        {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
+      with_items:
+        - epel-release
+
+    - name: install basic packages
+      action: >
+        {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
+      with_items:
+        - vim
+        - htop
