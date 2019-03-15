@@ -1,0 +1,6 @@
+- name: Install Base Software
+  hosts: all
+  tasks:
+    - name: Install HTOP
+      debug:
+        msg: "Hello World!"
