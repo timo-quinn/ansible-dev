@@ -1,17 +1,16 @@
 - name: Install Base Software
   hosts: all
-  remote_user: root
-  become: yes
-  become_method: su
   tasks:      
     - name: install system updates for centos systems
       yum: name=* state=latest update_cache=yes
+      become: yes
 
     - name: install epel-release
       action: >
         {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
       with_items:
         - epel-release
+      become: yes
 
     - name: install basic packages
       action: >
@@ -19,3 +18,4 @@
       with_items:
         - vim
         - htop
+      become: yes
