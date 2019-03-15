@@ -7,9 +7,7 @@
 
     - name: install epel-release
       action: >
-        {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
-      with_items:
-        - epel-release
+        {{ ansible_pkg_mgr }} name=['epel-release'] state=present update_cache=yes
       become: yes
 
     - name: install basic packages
