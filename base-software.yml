@@ -6,11 +6,13 @@
       become: yes
 
     - name: install epel-release
-      action: >
-        {{ ansible_pkg_mgr }} name=['epel-release'] state=present update_cache=yes
+      package:
+        name: epel-release
+        state: present
       become: yes
-
-    - name: install basic packages
-      action: >
-        {{ ansible_pkg_mgr }} name=['vim','htop'] state=present update_cache=yes
+      
+    - name: install epel-release
+      package:
+        name: ['vim','htop']
+        state: present
       become: yes
