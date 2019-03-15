@@ -1,5 +1,8 @@
 - name: Install Base Software
   hosts: all
+  remote_user: root
+  become: yes
+  become_method: su
   tasks:      
     - name: install system updates for centos systems
       yum: name=* state=latest update_cache=yes
