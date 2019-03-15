@@ -12,5 +12,5 @@
 
     - name: install basic packages
       action: >
-        {{ ansible_pkg_mgr }} name=['vim', 'htop'] state=present update_cache=yes
+        {{ ansible_pkg_mgr }} name=['vim','htop'] state=present update_cache=yes
       become: yes
